@@ -1,104 +1,122 @@
-/* Contenedor principal */
+/* Contenedor principal - Fondo Bolt New (azul oscuro) */
 .contenedor-formulario {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #26566C;
-  }
-  
-  /* Formulario con dimensiones exactas */
-  .formulario {
-    width: 400px; /* Ancho fijo */
-    padding: 30px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Campos del formulario */
-  .campo {
-    margin-bottom: 20px;
-  }
-  
-  .campo label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #333;
-  }
-  
-  .campo input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-  
-  /* Botones */
-  button[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #3367d6;
-  }
-  
-  .alternar {
-    width: 100%;
-    margin-top: 15px;
-    background: none;
-    border: none;
-    color: #4285f4;
-    cursor: pointer;
-    text-decoration: underline;
-  }
-  
-  /* Mensajes */
-  .mensaje-error {
-    margin-top: 15px;
-    color: #d32f2f;
-    text-align: center;
-  }
-  
-  .mensaje-bienvenida {
-    width: 400px;
-    padding: 30px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  /* [Mantén todos los estilos anteriores y añade estos] */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0d0d2b; /* Azul oscuro similar a Bolt */
+  background-image: linear-gradient(135deg, #0d0d2b 0%, #1a1a3a 100%);
+  padding: 20px;
+}
+
+/* Formulario - Mantiene fondo blanco para contraste */
+.formulario {
+  width: 400px;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover para el formulario */
+.formulario:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+/* Campos del formulario (mantenemos tus estilos) */
+.campo {
+  margin-bottom: 20px;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.campo input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.campo input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+/* Botones - Azul vibrante estilo Bolt */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb; /* Azul Bolt */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #1d4ed8; /* Azul más oscuro */
+  transform: translateY(-2px);
+}
+
+/* Botón alternar */
+.alternar {
+  width: 100%;
+  margin-top: 15px;
+  background: none;
+  border: none;
+  color: #2563eb; /* Azul Bolt */
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.alternar:hover {
+  text-decoration: none;
+  color: #1d4ed8;
+}
+
+/* Mensajes de error */
+.mensaje-error {
+  margin-top: 15px;
+  color: #ff6b6b; /* Rojo claro moderno */
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Mensajes de bienvenida y confirmación */
+.mensaje-bienvenida,
+.mensaje-confirmacion {
+  width: 400px;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
 
 .mensaje-confirmacion {
-    width: 400px;
-    padding: 30px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    animation: fadeIn 0.5s;
-  }
-  
-  .mensaje-confirmacion h2 {
-    color: #4CAF50;
-    margin-bottom: 15px;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  animation: fadeIn 0.5s;
+}
 
-  
+.mensaje-confirmacion h2 {
+  color: #4CAF50;
+  margin-bottom: 15px;
+}
+
+/* Animación para el mensaje de confirmación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
