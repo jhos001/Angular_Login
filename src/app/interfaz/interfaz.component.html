@@ -1,0 +1,54 @@
+<div class="contenedor-formulario">
+    <!-- Mensaje de bienvenida -->
+    <div *ngIf="estaRegistrado" class="mensaje-bienvenida">
+      <h2>¡Bienvenido usuario, {{ nombres }} {{ apellidos }}!</h2>
+      <button (click)="estaRegistrado = false; limpiarCampos()">Cerrar sesión</button>
+    </div>
+  
+    <!-- Mensaje de confirmación de registro -->
+    <div *ngIf="registroExitoso" class="mensaje-confirmacion">
+      <h2>✔️ Su cuenta ha sido creada</h2>
+      <p>Redirigiendo al login</p>
+    </div>
+  
+    <!-- Formulario principal -->
+    <div *ngIf="!estaRegistrado && !registroExitoso" class="formulario">
+      <h2>{{ mostrarLogin ? 'Acceso' : 'Registro' }}</h2>
+      
+      <form (ngSubmit)="mostrarLogin ? acceder() : registrar()">
+        <!-- Campos para nombres y apellidos -->
+        <div class="campo">
+          <label>Nombres:</label>
+          <input type="text" [(ngModel)]="nombres" name="nombres" 
+                 placeholder="Ingrese sus nombres completos" required>
+        </div>
+        
+        <div class="campo">
+          <label>Apellidos:</label>
+          <input type="text" [(ngModel)]="apellidos" name="apellidos" 
+                 placeholder="Ingrese sus nombres completos" required>
+        </div>
+  
+        <!-- Campo de contraseña -->
+        <div class="campo">
+          <label>Contraseña:</label>
+          <input type="password" [(ngModel)]="contrasena" name="contrasena" 
+                 minlength="6" required>
+        </div>
+  
+        <!-- Botones -->
+        <div class="acciones">
+          <button type="submit">{{ mostrarLogin ? 'Acceder' : 'Registrarse' }}</button>
+          <button type="button" class="alternar" 
+                  (click)="mostrarLogin = !mostrarLogin; mensajeError = ''; limpiarCampos()">
+            {{ mostrarLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Accede' }}
+          </button>
+        </div>
+  
+        <!-- Mensajes de error -->
+        <div *ngIf="mensajeError" class="mensaje-error">
+          {{ mensajeError }}
+        </div>
+      </form>
+    </div>
+  </div>

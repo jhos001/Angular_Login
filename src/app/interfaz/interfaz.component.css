@@ -1,0 +1,104 @@
+/* Contenedor principal */
+.contenedor-formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #26566C;
+  }
+  
+  /* Formulario con dimensiones exactas */
+  .formulario {
+    width: 400px; /* Ancho fijo */
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Campos del formulario */
+  .campo {
+    margin-bottom: 20px;
+  }
+  
+  .campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .campo input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  /* Botones */
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3367d6;
+  }
+  
+  .alternar {
+    width: 100%;
+    margin-top: 15px;
+    background: none;
+    border: none;
+    color: #4285f4;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Mensajes */
+  .mensaje-error {
+    margin-top: 15px;
+    color: #d32f2f;
+    text-align: center;
+  }
+  
+  .mensaje-bienvenida {
+    width: 400px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  /* [Mantén todos los estilos anteriores y añade estos] */
+
+.mensaje-confirmacion {
+    width: 400px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.5s;
+  }
+  
+  .mensaje-confirmacion h2 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  
