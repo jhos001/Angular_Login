@@ -53,19 +53,36 @@ export class InterfazComponent {
     this.limpiarCampos();
   }
 
-  // Registra un nuevo usuario
+  // Registra un nuevo usuario (¡Corregido para evitar duplicados!)
   registrar(): void {
-    if (!this.validarLetras(this.nombres)) {
-      this.mensajeError = 'Solo se permiten letras en nombres';
+    // Validación de campos vacíos
+    if (!this.nombres || !this.apellidos || !this.contrasena) {
+      this.mensajeError = 'Todos los campos son obligatorios';
       return;
     }
 
+    // Validación de letras solo en nombres/apellidos
+    if (!this.validarLetras(this.nombres) || !this.validarLetras(this.apellidos)) {
+      this.mensajeError = 'Solo se permiten letras en nombres y apellidos';
+      return;
+    }
+
+    // Validación de contraseña
     if (this.contrasena.length < 6) {
       this.mensajeError = 'La contraseña debe tener al menos 6 caracteres';
       return;
     }
 
-    // Guarda los datos (simulando base de datos)
+    //  Validación de usuario existente (NUEVO)
+    if (
+      this.usuarioRegistrado.nombres === this.nombres &&
+      this.usuarioRegistrado.apellidos === this.apellidos
+    ) {
+      this.mensajeError = 'Estos datos ya están registrados';
+      return;
+    }
+
+    // Registro exitoso
     this.usuarioRegistrado = {
       nombres: this.nombres,
       apellidos: this.apellidos,
