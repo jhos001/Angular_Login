@@ -1,15 +1,14 @@
-/* Contenedor principal - Fondo Bolt New (azul oscuro) */
+/* Contenedor principal (fondo azul oscuro con gradiente) */
 .contenedor-formulario {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #0d0d2b; /* Azul oscuro similar a Bolt */
-  background-image: linear-gradient(135deg, #0d0d2b 0%, #1a1a3a 100%);
+  background: linear-gradient(135deg, #0d0d2b 0%, #255165 100%);
   padding: 20px;
 }
 
-/* Formulario - Mantiene fondo blanco para contraste */
+/* Card del formulario */
 .formulario {
   width: 400px;
   padding: 30px;
@@ -25,7 +24,7 @@
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 
-/* Campos del formulario (mantenemos tus estilos) */
+/* Estilos para campos */
 .campo {
   margin-bottom: 20px;
 }
@@ -52,22 +51,21 @@
   outline: none;
 }
 
-/* Botones - Azul vibrante estilo Bolt */
+/* Botones */
 button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background-color: #2563eb; /* Azul Bolt */
+  background-color: #2563eb;
   color: white;
   border: none;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 button[type="submit"]:hover {
-  background-color: #1d4ed8; /* Azul más oscuro */
-  transform: translateY(-2px);
+  background-color: #1d4ed8;
 }
 
 /* Botón alternar */
@@ -76,7 +74,7 @@ button[type="submit"]:hover {
   margin-top: 15px;
   background: none;
   border: none;
-  color: #2563eb; /* Azul Bolt */
+  color: #2563eb;
   cursor: pointer;
   font-weight: 500;
   transition: color 0.3s;
@@ -87,10 +85,10 @@ button[type="submit"]:hover {
   color: #1d4ed8;
 }
 
-/* Mensajes de error */
+/* Mensajes */
 .mensaje-error {
   margin-top: 15px;
-  color: #ff6b6b; /* Rojo claro moderno */
+  color: #ff6b6b;
   text-align: center;
   font-weight: 500;
 }
@@ -106,17 +104,12 @@ button[type="submit"]:hover {
   text-align: center;
 }
 
-.mensaje-confirmacion {
-  animation: fadeIn 0.5s;
-}
-
-.mensaje-confirmacion h2 {
-  color: #4CAF50;
-  margin-bottom: 15px;
-}
-
-/* Animación para el mensaje de confirmación */
+/* Animación para mensaje de confirmación */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.mensaje-confirmacion {
+  animation: fadeIn 0.5s;
 }

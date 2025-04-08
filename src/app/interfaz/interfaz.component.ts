@@ -14,79 +14,93 @@ export class InterfazComponent {
   nombres: string = '';
   apellidos: string = '';
   contrasena: string = '';
-  
-  // Datos registrados (usados para validación de acceso)
-  nombresRegistrados: string = '';
-  apellidosRegistrados: string = '';
-  contrasenaRegistrada: string = '';
-  
+
+  // Datos del usuario registrado (simulado)
+  private usuarioRegistrado = {
+    nombres: '',
+    apellidos: '',
+    contrasena: ''
+  };
+
   // Estados
   estaRegistrado: boolean = false;
   mostrarLogin: boolean = false;
   mensajeError: string = '';
   registroExitoso: boolean = false;
 
-  validarLetras(valor: string): boolean {
+  // Valida que solo haya letras (incluye acentos y espacios)
+  private validarLetras(valor: string): boolean {
     return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(valor);
   }
 
-  limpiarCampos() {
+  // Limpia los campos del formulario
+  limpiarCampos(): void {
     this.nombres = '';
     this.apellidos = '';
     this.contrasena = '';
   }
 
-  registrar() {
-    if (!this.validarLetras(this.nombres) || !this.validarLetras(this.apellidos)) {
-      this.mensajeError = 'Solo se permiten letras en nombres y apellidos';
+  // Alterna entre login y registro
+  alternarFormulario(): void {
+    this.mostrarLogin = !this.mostrarLogin;
+    this.mensajeError = '';
+    this.limpiarCampos();
+  }
+
+  // Cierra la sesión del usuario
+  cerrarSesion(): void {
+    this.estaRegistrado = false;
+    this.limpiarCampos();
+  }
+
+  // Registra un nuevo usuario
+  registrar(): void {
+    if (!this.validarLetras(this.nombres)) {
+      this.mensajeError = 'Solo se permiten letras en nombres';
       return;
     }
-    
+
     if (this.contrasena.length < 6) {
       this.mensajeError = 'La contraseña debe tener al menos 6 caracteres';
       return;
     }
 
-    // Guardamos los datos de registro para compararlos luego
-    this.nombresRegistrados = this.nombres;
-    this.apellidosRegistrados = this.apellidos;
-    this.contrasenaRegistrada = this.contrasena;
+    // Guarda los datos (simulando base de datos)
+    this.usuarioRegistrado = {
+      nombres: this.nombres,
+      apellidos: this.apellidos,
+      contrasena: this.contrasena
+    };
 
     this.registroExitoso = true;
     this.mensajeError = '';
 
+    // Redirige al login después de 3 segundos
     setTimeout(() => {
       this.registroExitoso = false;
+      this.mostrarLogin = true;
       this.limpiarCampos();
       this.mostrarLogin = true; // Después de registrar, mostrar el formulario de acceso
     }, 3000);
   }
 
-  // Función para acceder (validación de login)
-  acceder() {
-    // Validamos que los campos no estén vacíos
+  // Inicia sesión
+  acceder(): void {
     if (!this.nombres || !this.apellidos || !this.contrasena) {
       this.mensajeError = 'Todos los campos son obligatorios';
       return;
     }
 
-    if (!this.validarLetras(this.nombres) || !this.validarLetras(this.apellidos)) {
-      this.mensajeError = 'Solo se permiten letras en nombres y apellidos';
-      return;
-    }
-
-    if (this.contrasena.length < 6) {
-      this.mensajeError = 'La contraseña debe tener al menos 6 caracteres';
-      return;
-    }
-
-    // Comprobamos si los datos ingresados coinciden con los registrados
-    if (this.nombres === this.nombresRegistrados && this.apellidos === this.apellidosRegistrados && this.contrasena === this.contrasenaRegistrada) {
+    // Compara con los datos registrados
+    if (
+      this.nombres === this.usuarioRegistrado.nombres &&
+      this.apellidos === this.usuarioRegistrado.apellidos &&
+      this.contrasena === this.usuarioRegistrado.contrasena
+    ) {
       this.estaRegistrado = true;
-      this.mensajeError = ''; // Limpiamos cualquier error previo
+      this.mensajeError = '';
     } else {
-      // Si los datos no coinciden, mostramos el mensaje de error
-      this.mensajeError = 'Nombre, apellido o contraseña incorrectos. Vuelva a intentarlo.';
+      this.mensajeError = 'Credenciales incorrectas';
     }
   }
 }
